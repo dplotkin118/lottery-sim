@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<head>
+        <title> Lottery Sim </title>
+</head>
+<body>
+        <script language="javascript">
+                var choices = [];
+                for (let i = 0; i < 5; i++) {
+                        choices.push(Math.floor(Math.random() * 48) + 1)
+                }
+                choices = [12, 15, 24, 33, 47];
+                var lucky = Math.floor(Math.random() * 18) + 1;
+                document.write("My pick: " + choices.join(" ") + " lucky " + lucky + "</br>");
+                choices.sort(function (x, y) {return x - y});
+                document.write("My pick sorted: " + choices.join(" ") + " lucky " + lucky + "</br>");
+                var winning = [12, 15, 24, 35, 48];
+                var winning_lucky = 3;
+                document.write("Winning numbers: " + winning.join(" ") + " lucky " + winning_lucky + "</br>");
+                var matching = 0;
+                for (let i = 0; i < choices.length; i++) {
+                        if (winning.includes(choices.at(i))) {
+                                matching++;
+                        }
+                }
+                var lucky_matching = (lucky == winning_lucky) ? 1 : 0;
+                document.write("Numbers Matching: " + matching + "</br>");
+                if (lucky_matching == 1) {
+                        document.write("Lucky ball matching!" + "</br>");
+                }
+                else {
+                        document.write("Lucky ball does not match." + "</br>");
+                }
+                var payout = 0;
+                if (matching == 0 || matching == 1) {
+                        if (lucky_matching == 1) {
+                                payout += 4; 
+                        }
+                }
+                else if (matching == 2) {
+                        payout += 3;
+                        if (lucky_matching == 1) {
+                                payout += 22;
+                        }
+                }
+                else if (matching == 3) {
+                        payout += 20;
+                        if (lucky_matching == 1) {
+                                payout += 130;
+                        }
+                }
+                else if (matching == 4) {
+                        payout += 200;
+                        if (lucky_matching == 1) {
+                                payout += 4800;
+                        }
+                }
+                else if (matching == 5) {
+                        if (lucky_matching == 0) {
+                                payout += 25000
+                        }
+                        else {
+                                payout += 7000;
+                        }
+                }
+                document.write("Your winnings: $"); 
+                if (payout == 7000) {
+                        document.write(payout + " a WEEK for LIFE!");
+                }
+                else if (payout == 25000) {
+                        document.write(payout + " a YEAR for LIFE!");
+                }
+                else {
+                        document.write(payout);
+                }
+
+        </script>
+</body>
