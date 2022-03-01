@@ -9,7 +9,6 @@
                 for (let i = 0; i < 5; i++) {
                         choices.push(Math.floor(Math.random() * 48) + 1)
                 }
-                choices = [12, 15, 24, 33, 47];
                 var lucky = Math.floor(Math.random() * 18) + 1;
                 document.write("My pick: " + choices.join(" ") + " lucky " + lucky + "</br>");
                 choices.sort(function (x, y) {return x - y});
